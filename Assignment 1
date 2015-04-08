@@ -1,0 +1,55 @@
+# IT-496
+<?php
+
+$side1=14.8	
+$side2=20.3
+$side3=25.3
+
+$angle1=36
+$angle2=53
+$angle3=91
+
+echo "Perimeter = ". Findperimeter($side1, $side2, $side3)"<br/>";
+echo "Area = ". GetArea ($side1, $side2,$side3)"<br/>";
+echo "Sine = ". getSine($angle1)"<br/>";
+echo "Cosine = ". getCos($angle1)"<br/>";
+echo "Tangent = ". getTan($angle1)";
+
+/*to find the perimeter of the triangle we just have to add all the given lengths of its three sides.
+
+function Findperimeter($side1,$side2,$side3){
+$perimeter= $side1+$side2+$side3
+return ($perimeter)
+
+}
+
+/* when the lengths of the three sides of a triangle are given, we calculate the area by the following way
+
+function GetArea ($side1,$side2,$side3){
+$A = ($side1+$side2+$side3)/2
+
+return sqrt($A * ($A - $side1)*($A - $side2)*($A - $side3));
+
+}
+
+/* The following formula can find the Sine of the given angles
+ 
+function getSine($angle1){
+	return sin(deg2rad($angle1));
+}
+
+
+/* The following formula can find the Cosine of the given angles
+
+function getCos($angle1){
+	return cos(deg2rad($angle1));
+
+}
+
+/* The following formula can finds the Tangent of the given angles
+
+function getTan($angle1){
+	return tan(deg2rad($angle1));
+}
+
+?>
