@@ -46,7 +46,7 @@ function getCos($angle1){
 
 }
 
-/* The following formula can finds the Tangent of the given angles
+/* The following formula can find the Tangent of the given angles
 
 function getTan($angle1){
 	return tan(deg2rad($angle1));
