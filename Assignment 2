@@ -1,0 +1,52 @@
+<?php
+
+//this would open the input.txt file and read it
+
+$myfile = fopen ("input.txt", "r");
+
+//this would create the arrays and initialize them
+
+$array_all = array();
+$array_int = array();
+$array_string = array();
+
+//this would input the selected text file into an array
+
+while(!feof($inputFile)) {
+		$array_all[] = fgets($inputFile);
+	}
+
+//this would put items in the file into the correct array
+
+foreach($array_all as $f)
+{
+	if(ctype_digit($f))
+	{
+		array_push($array_int, $f);
+        
+	} else {
+		
+		array_push($array_string, $f);
+	}
+}
+
+echo $f. "<br>";
+
+//this would sort the arrays in descending order
+
+rsort($array_int);
+rsort($array_string);
+
+//this would print the int contents from array
+
+foreach ($array_int as $f){
+	echo("This content is from array_int: ".$f."<br/>");
+}
+echo("<br/>");
+
+//this would print the string contents from array
+
+foreach ($array_string as $f){
+	echo("This content is from array_string: ".$f."<br/>");
+}
+?>
