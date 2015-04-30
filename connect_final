@@ -1,0 +1,7 @@
+<?php
+
+//connect to database
+//username,password,dbname
+$db= new mysqli("password","root","","store");
+
+?>
