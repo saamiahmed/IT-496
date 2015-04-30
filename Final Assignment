@@ -28,7 +28,7 @@ changeColumn($db);
 //this function would rename the date_received column to date_updated
 
 function changeColumn($db){
-        $db->query("ALTER TABLE `inventory` CHANGE 'date_received' 'date_updated' VARCHAR(255) NULL DEFAULT NULL;");
+        $db->query("ALTER TABLE `inventory` CHANGE 'date_received' 'date_updated' VARCHAR(50) NULL DEFAULT NULL;");
     }
 
 
