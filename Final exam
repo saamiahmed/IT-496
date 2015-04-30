@@ -1,0 +1,53 @@
+<?php
+
+require 'connect01.php';
+
+//open and read text file
+$inputFile = fopen("characters.txt", "r");
+    
+//input all text to an array
+while(!feof($inputFile)) {
+	
+$array_all[] = fgets($inputFile);
+}
+
+//http://www.w3schools.com/php/func_array_shuffle.asp
+
+$my_array = array("A,B,C,D,E,F,G,H,I,J,K,L,M,0123456789,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,?,!,/,\,(,),_,.);
+
+shuffle($my_array);
+?>
+
+//replace the specific characters
+//http://php.net/manual/en/control-structures.foreach.php
+
+function remove($z) {
+	$newArray = array();
+	foreach ($z as $value){
+		#echo($value);
+		if (($value != "b") && ($value != "s") && ($value != "0") && ($value != "1") && ($value != "-")){
+			array_push($newArray,$value);
+		}
+	}
+	return($newArray);
+
+//limits the characters of the password
+
+if(!array_key_exists('password', $_POST))
+    die('no password specified');
+
+$password = trim($_POST['password']);
+if(strlen($password) < 8)
+    die('Password must be at least 8 characters');
+	
+//function to create hashed password
+//http://stackoverflow.com/questions/28595843/php-login-script-sha256-authme
+
+function hashedPassowrd($length,$z){
+	$password = "";
+	for($i=0; $i<=$len; $i++){
+		$pass = $pass . array_pop($z);
+	}
+	return hash("sha256", $pass);
+
+<?php
