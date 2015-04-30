@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>inventoryID</th>
+        <th>partNumber</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Date Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+    
+<?php
+
+// this would crete the connection with the connect001 databse to access the data
+require 'connect001.php';
+
+//use of sort functionality for extra credit
+
+$result = $db->query("SELECT * FROM Inventory ORDER BY Inventory_Id ASC");
+
+
+changeColumn($db);
+
+//this function would rename the date_received column to date_updated
+
+function changeColumn($db){
+        $db->query("ALTER TABLE `inventory` CHANGE 'date_received' 'date_updated' VARCHAR(255) NULL DEFAULT NULL;");
+    }
+
+
+trimColumn($db);
+
+//this function would trim the description column to a length of 20
+
+function trimColumn($db){
+        $db->query("ALTER TABLE `inventory` CHANGE `Description` `Description` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_general_ci NULL DEFAULT NULL;");
+    }
+
+//this function would remove the timestamp from date_received
+
+function removeTime($dateStr){
+		return substr($dateStr,0,10);
+	}
+
+
+
+if ($result -> num_rows >0) {
+    
+    
+// this would output the data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>".$row["Inventory_Id"]."</td><td>".$row["Part_Number"]."</td><td>".$row["Description"]."</td><td>".$row["Quantity"]."</td><td>".$row["Price"]."</td><td>".removeTime  (isset ($row["date_updated"]))."</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+
+$db -> close();
+
+
+?>
